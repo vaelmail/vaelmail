@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 220" width="100%" height="220">
+  <defs>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c121e"/>
+      <stop offset="100%" stop-color="#060911"/>
+    </linearGradient>
+
+    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141f33"/>
+      <stop offset="100%" stop-color="#0e1726"/>
+    </linearGradient>
+
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00e599"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+
+    <style>
+      .label-title {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+      .label-sub {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+      }
+      .sec-title {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+      @keyframes dashAnim {
+        from { stroke-dashoffset: 24; }
+        to { stroke-dashoffset: 0; }
+      }
+      .animated-wire {
+        stroke-dasharray: 6 3;
+        animation: dashAnim 1.5s linear infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Container -->
+  <rect x="2" y="2" width="836" height="216" rx="12" fill="url(#cardGrad)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Column 1: Client Ingress -->
+  <g transform="translate(24, 20)">
+    <text class="sec-title" x="0" y="16" fill="#38bdf8">1. Network Ingress</text>
+
+    <!-- Clearnet Node -->
+    <rect x="0" y="30" width="220" height="42" rx="8" fill="url(#boxGrad)" stroke="#1e293b" stroke-width="1"/>
+    <circle cx="16" cy="51" r="4" fill="#00e599"/>
+    <text class="label-title" x="30" y="47" fill="#f8fafc">Clearnet Webmail</text>
+    <text class="label-sub" x="30" y="61" fill="#64748b">https://vaelmail.com</text>
+
+    <!-- Tor Node -->
+    <rect x="0" y="80" width="220" height="42" rx="8" fill="url(#boxGrad)" stroke="#1e293b" stroke-width="1"/>
+    <circle cx="16" cy="101" r="4" fill="#a855f7"/>
+    <text class="label-title" x="30" y="97" fill="#f8fafc">Tor v3 Onion Hidden</text>
+    <text class="label-sub" x="30" y="111" fill="#64748b">5gxnpix...onion</text>
+
+    <!-- No-JS Node -->
+    <rect x="0" y="130" width="220" height="42" rx="8" fill="url(#boxGrad)" stroke="#1e293b" stroke-width="1"/>
+    <circle cx="16" cy="151" r="4" fill="#f43f5e"/>
+    <text class="label-title" x="30" y="147" fill="#f8fafc">Scriptless No-JS Mirror</text>
+    <text class="label-sub" x="30" y="161" fill="#64748b">https://nojs.vaelmail.com</text>
+  </g>
+
+  <!-- Connecting Wires 1 -> 2 -->
+  <path class="animated-wire" d="M 244 71 L 300 101" fill="none" stroke="#00e599" stroke-width="1.5" stroke-opacity="0.8"/>
+  <path class="animated-wire" d="M 244 121 L 300 121" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-opacity="0.8"/>
+  <path class="animated-wire" d="M 244 171 L 300 141" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-opacity="0.8"/>
+
+  <!-- Column 2: Gateway & Authentication -->
+  <g transform="translate(300, 20)">
+    <text class="sec-title" x="0" y="16" fill="#00e599">2. Security Gateway</text>
+
+    <rect x="0" y="30" width="230" height="142" rx="10" fill="url(#boxGrad)" stroke="#00e599" stroke-width="1.2" stroke-opacity="0.6"/>
+
+    <g transform="translate(18, 52)">
+      <!-- Item 1 -->
+      <circle cx="4" cy="4" r="3" fill="#00e599"/>
+      <text class="label-title" x="16" y="8" fill="#f1f5f9">Argon2id Key Verification</text>
+      <text class="label-sub" x="16" y="22" fill="#94a3b8">16-Digit Master Keys</text>
+
+      <!-- Item 2 -->
+      <circle cx="4" cy="40" r="3" fill="#38bdf8"/>
+      <text class="label-title" x="16" y="44" fill="#f1f5f9">Tracker Stripping &amp; CORS</text>
+      <text class="label-sub" x="16" y="58" fill="#94a3b8">Blocks 100% Remote Pixels</text>
+
+      <!-- Item 3 -->
+      <circle cx="4" cy="76" r="3" fill="#f59e0b"/>
+      <text class="label-title" x="16" y="80" fill="#f1f5f9">Deterministic Routing</text>
+      <text class="label-sub" x="16" y="94" fill="#94a3b8">Subaddressed @vael.pw Aliases</text>
+    </g>
+  </g>
+
+  <!-- Connecting Wires 2 -> 3 -->
+  <path class="animated-wire" d="M 530 121 L 586 121" fill="none" stroke="url(#lineGrad)" stroke-width="2"/>
+
+  <!-- Column 3: Encrypted Swedish Storage -->
+  <g transform="translate(586, 20)">
+    <text class="sec-title" x="0" y="16" fill="#f59e0b">3. Swedish Storage</text>
+
+    <rect x="0" y="30" width="228" height="142" rx="10" fill="url(#boxGrad)" stroke="#1e293b" stroke-width="1"/>
+
+    <g transform="translate(18, 52)">
+      <!-- Item 1 -->
+      <circle cx="4" cy="4" r="3" fill="#38bdf8"/>
+      <text class="label-title" x="16" y="8" fill="#f1f5f9">Stockholm Datacenter</text>
+      <text class="label-sub" x="16" y="22" fill="#38bdf8">217.60.78.29 | Sweden &#x1F1F8;&#x1F1EA;</text>
+
+      <!-- Item 2 -->
+      <circle cx="4" cy="40" r="3" fill="#00e599"/>
+      <text class="label-title" x="16" y="44" fill="#f1f5f9">AES-256 Maildir Engine</text>
+      <text class="label-sub" x="16" y="58" fill="#94a3b8">Encrypted per user partition</text>
+
+      <!-- Item 3 -->
+      <circle cx="4" cy="76" r="3" fill="#f59e0b"/>
+      <text class="label-title" x="16" y="80" fill="#f1f5f9">Monero (XMR) Upgrades</text>
+      <text class="label-sub" x="16" y="94" fill="#94a3b8">On-chain Non-Custodial</text>
+    </g>
+  </g>
+</svg>
